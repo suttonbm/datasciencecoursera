@@ -1,1 +1,6 @@
 *.csv
+*.Rhistory
+*.zip
+*.RData
+Getting_Cleaning_Data/Project/UCI HAR Dataset/*
+Getting_Cleaning_Data/Quiz3/q2.jpg
