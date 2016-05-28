@@ -4,3 +4,6 @@
 *.RData
 Getting_Cleaning_Data/Project/UCI HAR Dataset/*
 Getting_Cleaning_Data/Quiz3/q2.jpg
+Practical_Machine_Learning/Project/pml-testing.csv
+Practical_Machine_Learning/Project/pml-training.csv
+Practical_Machine_Learning/Project/project_cache/*
