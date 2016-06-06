@@ -1,33 +1,60 @@
+###########################################################
 #
-# This is the user-interface definition of a Shiny web application. You can
-# run the application by clicking 'Run App' above.
+#   Coursera:
+#   Developing Data Products (JHU)
+#   Course Project
 #
-# Find out more about building applications with Shiny here:
-# 
-#    http://shiny.rstudio.com/
-#
+###########################################################
 
 library(shiny)
 
-# Define UI for application that draws a histogram
 shinyUI(fluidPage(
   
-  # Application title
-  titlePanel("Old Faithful Geyser Data"),
+  # Application Title
+  titlePanel("Global Earthquake Data Exploration"),
   
-  # Sidebar with a slider input for number of bins 
+  # 
   sidebarLayout(
     sidebarPanel(
-       sliderInput("bins",
-                   "Number of bins:",
-                   min = 1,
-                   max = 50,
-                   value = 30)
+      dateRangeInput("dateRange",
+                     label = "Choose a date range to view:",
+                     start = "1000-01-01",
+                     end = "2012-12-31",
+                     min = "1000-01-01",
+                     max = "2012-12-31",
+                     startview = "decade"),
+      sliderInput("magRange",
+                  label = "Choose a range of magnitudes:",
+                  min = 5,
+                  max = 10,
+                  value = c(5,10),
+                  ticks = FALSE,
+                  step = 0.5,
+                  animate = FALSE),
+      sliderInput("circleScale",
+                  label = "Magnitude Plot Scale",
+                  min = 1,
+                  max = 10,
+                  value = 1),
+      selectInput("colorScheme",
+                  label = "Magnitude Color Scheme:",
+                  choices = c(
+                    "viridis",
+                    "magma",
+                    "inferno",
+                    "plasma"
+                  )),
+      selectInput("mapLevel",
+                  label = "Map Level:",
+                  choices = c(
+                    "world",
+                    "continent",
+                    "country"
+                  )),
+      width = 4
     ),
-    
-    # Show a plot of the generated distribution
     mainPanel(
-       plotOutput("distPlot")
-    )
-  )
+      plotOutput("eqMap"),
+      verbatimTextOutput("data")
+    ))
 ))

@@ -1,26 +1,33 @@
+###########################################################
 #
-# This is the server logic of a Shiny web application. You can run the 
-# application by clicking 'Run App' above.
+#   Coursera:
+#   Developing Data Products (JHU)
+#   Course Project
 #
-# Find out more about building applications with Shiny here:
-# 
-#    http://shiny.rstudio.com/
-#
+###########################################################
 
+# Load required libraries
 library(shiny)
+
+# Load supporting R scripts
+source("loadEarthquakeData.R")
+source("generateMap.R")
 
 # Define server logic required to draw a histogram
 shinyServer(function(input, output) {
-   
-  output$distPlot <- renderPlot({
-    
-    # generate bins based on input$bins from ui.R
-    x    <- faithful[, 2] 
-    bins <- seq(min(x), max(x), length.out = input$bins + 1)
-    
-    # draw the histogram with the specified number of bins
-    hist(x, breaks = bins, col = 'darkgray', border = 'white')
-    
+  
+  filteredData <- reactive({
+    rawData.M[
+        rawData.M$mag >= input$magRange[1] & 
+          rawData.M$mag <= input$magRange[2] &
+          rawData.M$date >= input$dateRange[1] &
+          rawData.M$date <= input$dateRange[2], ]
   })
   
+  output$eqMap <- renderPlot({
+    generateMap(filteredData(),
+                colorMap = input$colorScheme,
+                input$circleScale)
+  }, height = 600, width = 800)
+
 })
