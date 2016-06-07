@@ -107,5 +107,6 @@ if (!file.exists(MERGED_DATAFILE)) {
   rawData.M <- downloadRawFiles()
 } else {
   rawData.M <- read.table(MERGED_DATAFILE)
-  rawData.M$date<- ymd(rawData.M$date)
+  rawData.M$date <- ymd(rawData.M$date)
+  rawData.M <- rawData.M[order(-rawData.M$mag),]
 }

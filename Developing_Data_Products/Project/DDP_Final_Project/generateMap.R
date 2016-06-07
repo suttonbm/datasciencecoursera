@@ -1,6 +1,7 @@
 library(maps)
 library(mapproj)
 library(maptools)
+library(ggmap)
 library(classInt)
 library(viridis)
 
@@ -12,6 +13,8 @@ library(viridis)
 generateMap <- function(data,
                         colorMap = "viridis",
                         circleScale = 1,
+                        xlim = c(-180, 180),
+                        ylim = c(-80, 80),
                         legend.title = "Earthquake Magnitude") {
   
   # Generate color map for earthquake locations
@@ -28,13 +31,19 @@ generateMap <- function(data,
   colMag <- colors[magBins]
   
   # Generate map
-  map(database="world",
+  map(database = "world",
+      fill = TRUE,
+      col = 'grey85',
+      xlim = xlim,
+      ylim = ylim,
+      wrap = FALSE,
+      resolution = 0,
       mar = c(0,0,0,0))
   points(data$lon, data$lat,
          pch = 21,
          cex = circleScale/5*magBins^2/nBreaks,
          bg = colMag,
-         lwd = 0)
+         col = colMag)
   
   # Add a legend
   legend.text <- c("< 6",

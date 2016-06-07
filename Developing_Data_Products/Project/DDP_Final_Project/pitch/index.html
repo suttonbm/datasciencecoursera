@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Earthquake Data Visualizer</title>
+  <meta charset="utf-8">
+  <meta name="description" content="Earthquake Data Visualizer">
+  <meta name="author" content="suttonbm">
+  <meta name="generator" content="slidify" />
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta http-equiv="X-UA-Compatible" content="chrome=1">
+  <link rel="stylesheet" href="libraries/frameworks/io2012/css/default.css" media="all" >
+  <link rel="stylesheet" href="libraries/frameworks/io2012/css/phone.css" 
+    media="only screen and (max-device-width: 480px)" >
+  <link rel="stylesheet" href="libraries/frameworks/io2012/css/slidify.css" >
+  <link rel="stylesheet" href="libraries/highlighters/highlight.js/css/tomorrow.css" />
+  <base target="_blank"> <!-- This amazingness opens all links in a new tab. -->  <link rel=stylesheet href="./assets/css/ribbons.css"></link>
+
+  
+  <!-- Grab CDN jQuery, fall back to local if offline -->
+  <script src="http://ajax.aspnetcdn.com/ajax/jQuery/jquery-1.7.min.js"></script>
+  <script>window.jQuery || document.write('<script src="libraries/widgets/quiz/js/jquery.js"><\/script>')</script> 
+  <script data-main="libraries/frameworks/io2012/js/slides" 
+    src="libraries/frameworks/io2012/js/require-1.0.8.min.js">
+  </script>
+  
+  
+
+</head>
+<body style="opacity: 0">
+  <slides class="layout-widescreen">
+    
+    <!-- LOGO SLIDE -->
+        <slide class="title-slide segue nobackground">
+  <hgroup class="auto-fadein">
+    <h1>Earthquake Data Visualizer</h1>
+    <h2></h2>
+    <p>suttonbm<br/></p>
+  </hgroup>
+  <article></article>  
+</slide>
+    
+
+    <!-- SLIDES -->
+    <slide class="eighty" id="slide-1" style="background:;">
+  <article data-timings="">
+    <Style>
+.eighty {
+  font-size: 80%;
+}
+</style>
+
+<h2>Introduction</h2>
+
+<p>The earthquake visualization tool was developed for the Developing Data Products course offered by Johns Hopkins University on Coursera.  The purpose of the tool is to allow a user to explore historical earthquake data by magnitude, date, and location.  A map is drawn for a selected region, and earthquakes are overlaid on the map with scale and color corresponding to earthquake magnitude.</p>
+
+<div style='text-align: center;'>
+    <img src='assets/img/worldpic.png' />
+</div>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-2" style="background:;">
+  <hgroup>
+    <h2>User Interface</h2>
+  </hgroup>
+  <article data-timings="">
+    <p>The user interface for the earthquake visualization tool was built using Shiny from RStudio. The interface allows the user to customize and explore earthquake data.</p>
+
+<div style='float:left;width:48%;' class='centered'>
+  <p><img src="assets/img/UI_inputs.png" alt="UI"></p>
+
+</div>
+<div style='float:right;width:48%;'>
+  <p>Using the inputs displayed to the left, a user can customize:</p>
+
+<ul>
+<li>The date range for which seismic events are displayed</li>
+<li>The range of magnitudes to be shown on the image</li>
+<li>The scale of the circles representing seismic events</li>
+<li>A color scheme to personalize aesthetic taste</li>
+<li>A target location to explore seismic data</li>
+</ul>
+
+</div>
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-3" style="background:;">
+  <hgroup>
+    <h2>Data Import</h2>
+  </hgroup>
+  <article data-timings="">
+    <p>Earthquake data is a combination of two data sources:</p>
+
+<ul>
+<li>The Global Historical Earthquake Archive (see <a href="https://www.globalquakemodel.org/what/seismic-hazard/historical-catalogue/">GEM</a>)</li>
+<li>The International Seismological Centre (see <a href="http://www.isc.ac.uk/iscgem/">ISC</a>)</li>
+</ul>
+
+<p>All the source code for the tool is available on <a href="github.com/suttonbm/datasciencecoursera/tree/master/Developing_Data_Products/Project/DDP_Final_Project">Github</a>.</p>
+
+<p>While the tool was developed to be used through a Shiny UI, all the features are also available as standalone R scripts.  To load the earthquake dataset at the console, run the following:</p>
+
+<pre><code class="r">source(paste0(pathToRepo, &#39;loadEarthquakeData.R&#39;))
+</code></pre>
+
+<p>Data files will be dynamically loaded from the web if they are not available.  Note that ISC data, although freely available, must be requested at the link above.</p>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-4" style="background:;">
+  <hgroup>
+    <h2>Plot Generation</h2>
+  </hgroup>
+  <article data-timings="">
+    <p>Earthquake plots are generated using the <code>maps</code> package in combination with R base graphics.  A plot can be generated using the source package as follows:</p>
+
+<div style='float:left;width:48%;' class='centered'>
+  <p><img src="assets/fig/unnamed-chunk-4-1.png" alt="plot of chunk unnamed-chunk-4"></p>
+
+</div>
+<div style='float:right;width:48%;'>
+  <pre><code class="r">source(paste0(pathToRepo, &#39;generateMap.R&#39;))
+generateMap(rawData.M,
+            colorMap = &quot;inferno&quot;,
+            circleScale = 3.5,
+            xlim = c(-80, 80),
+            ylim = c(0, 80))
+</code></pre>
+
+</div>
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+    <slide class="backdrop"></slide>
+  </slides>
+  <div class="pagination pagination-small" id='io2012-ptoc' style="display:none;">
+    <ul>
+      <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=1 title='NA'>
+         1
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=2 title='User Interface'>
+         2
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=3 title='Data Import'>
+         3
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=4 title='Plot Generation'>
+         4
+      </a>
+    </li>
+  </ul>
+  </div>  <!--[if IE]>
+    <script 
+      src="http://ajax.googleapis.com/ajax/libs/chrome-frame/1/CFInstall.min.js">  
+    </script>
+    <script>CFInstall.check({mode: 'overlay'});</script>
+  <![endif]-->
+</body>
+  <!-- Load Javascripts for Widgets -->
+  
+  <!-- LOAD HIGHLIGHTER JS FILES -->
+  <script src="libraries/highlighters/highlight.js/highlight.pack.js"></script>
+  <script>hljs.initHighlightingOnLoad();</script>
+  <!-- DONE LOADING HIGHLIGHTER JS FILES -->
+   
+  </html>

@@ -35,7 +35,7 @@ shinyUI(fluidPage(
                   label = "Magnitude Plot Scale",
                   min = 1,
                   max = 10,
-                  value = 1),
+                  value = 3),
       selectInput("colorScheme",
                   label = "Magnitude Color Scheme:",
                   choices = c(
@@ -44,17 +44,18 @@ shinyUI(fluidPage(
                     "inferno",
                     "plasma"
                   )),
-      selectInput("mapLevel",
-                  label = "Map Level:",
-                  choices = c(
-                    "world",
-                    "continent",
-                    "country"
-                  )),
+      textInput("loc",
+                label = "Map Location:",
+                value = "world"),
       width = 4
     ),
     mainPanel(
-      plotOutput("eqMap"),
-      verbatimTextOutput("data")
-    ))
+      h3("Earthquake Locations and Magnitudes"),
+      plotOutput("eqMap")
+    )),
+  
+  p("For more information, please refer to:",
+    a(href='LICENSE.html', "license information"),
+    " as well as ",
+    a(href="#", "documentation"))
 ))
