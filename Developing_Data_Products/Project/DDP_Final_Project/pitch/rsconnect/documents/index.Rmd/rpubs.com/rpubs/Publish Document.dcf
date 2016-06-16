@@ -1,0 +1,7 @@
+name: Publish Document
+account: rpubs
+server: rpubs.com
+appId: https://api.rpubs.com/api/v1/document/187735/9ec8b5b720a6453287cbb2b255558e40
+bundleId: https://api.rpubs.com/api/v1/document/187735/9ec8b5b720a6453287cbb2b255558e40
+url: http://rpubs.com/suttonbm/187735
+when: 1465343916.09169

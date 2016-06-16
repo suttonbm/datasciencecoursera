@@ -57,5 +57,5 @@ shinyUI(fluidPage(
   p("For more information, please refer to:",
     a(href='LICENSE.html', "license information"),
     " as well as ",
-    a(href="#", "documentation"))
+    a(href="DOCUMENTATION.html", "documentation"))
 ))

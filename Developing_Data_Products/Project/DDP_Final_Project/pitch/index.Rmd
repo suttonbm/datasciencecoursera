@@ -1,6 +1,6 @@
 ---
 title       : Earthquake Data Visualizer
-subtitle    : 
+subtitle    : JHU Coursera - Developing Data Products
 author      : suttonbm
 job         : 
 framework   : io2012        # {io2012, html5slides, shower, dzslides, ...}
@@ -9,13 +9,7 @@ hitheme     : tomorrow      #
 widgets     : []            # {mathjax, quiz, bootstrap}
 mode        : selfcontained # {standalone, draft}
 knit        : slidify::knit2slides
---- .eighty
-
-<Style>
-.eighty {
-  font-size: 80%;
-}
-</style>
+---
 
 ## Introduction
 The earthquake visualization tool was developed for the Developing Data Products course offered by Johns Hopkins University on Coursera.  The purpose of the tool is to allow a user to explore historical earthquake data by magnitude, date, and location.  A map is drawn for a selected region, and earthquakes are overlaid on the map with scale and color corresponding to earthquake magnitude.
@@ -63,6 +57,10 @@ pathToRepo <- 'E:/programming/datasciencecoursera/Developing_Data_Products/Proje
 source(paste0(pathToRepo, 'loadEarthquakeData.R'))
 ```
 
+```{r include=F}
+library(lubridate)
+```
+
 ```{r echo=F}
 rawData.M <- read.table(paste0(pathToRepo,'data/isc-gem-data.tab'))
 rawData.M$date <- ymd(rawData.M$date)
@@ -78,8 +76,11 @@ Earthquake plots are generated using the `maps` package in combination with R ba
 
 *** =left
 
-```{r echo=F, warning=F}
+```{r include=F}
 source(paste0(pathToRepo, 'generateMap.R'))
+```
+
+```{r echo=F, warning=F}
 generateMap(rawData.M,
             colorMap = "inferno",
             circleScale = 3.5,

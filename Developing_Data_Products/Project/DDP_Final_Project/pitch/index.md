@@ -1,6 +1,6 @@
 ---
 title       : Earthquake Data Visualizer
-subtitle    : 
+subtitle    : JHU Coursera - Developing Data Products
 author      : suttonbm
 job         : 
 framework   : io2012        # {io2012, html5slides, shower, dzslides, ...}
@@ -9,13 +9,7 @@ hitheme     : tomorrow      #
 widgets     : []            # {mathjax, quiz, bootstrap}
 mode        : selfcontained # {standalone, draft}
 knit        : slidify::knit2slides
---- .eighty
-
-<Style>
-.eighty {
-  font-size: 80%;
-}
-</style>
+---
 
 ## Introduction
 The earthquake visualization tool was developed for the Developing Data Products course offered by Johns Hopkins University on Coursera.  The purpose of the tool is to allow a user to explore historical earthquake data by magnitude, date, and location.  A map is drawn for a selected region, and earthquakes are overlaid on the map with scale and color corresponding to earthquake magnitude.
@@ -64,6 +58,8 @@ source(paste0(pathToRepo, 'loadEarthquakeData.R'))
 
 
 
+
+
 Data files will be dynamically loaded from the web if they are not available.  Note that ISC data, although freely available, must be requested at the link above.
 
 --- &twocol
@@ -73,7 +69,9 @@ Earthquake plots are generated using the `maps` package in combination with R ba
 
 *** =left
 
-![plot of chunk unnamed-chunk-4](assets/fig/unnamed-chunk-4-1.png)
+
+
+![plot of chunk unnamed-chunk-6](figure/unnamed-chunk-6-1.png)
 
 *** =right
 
