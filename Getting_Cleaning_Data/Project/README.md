@@ -13,7 +13,7 @@ __run_analysis.R__ is an R script that will download the Human Activity Recognit
 
 The source of the original data will be downloaded from:
 
-<https://d396qusza40orc.cloudfront.net/getdata%2Fprojectfiles%2FUCI%20HAR%20Dataset.zip>
+[https://d396qusza40orc.cloudfront.net/getdata%2Fprojectfiles%2FUCI%20HAR%20Dataset.zip](https://d396qusza40orc.cloudfront.net/getdata%2Fprojectfiles%2FUCI%20HAR%20Dataset.zip)
 
 Library Requirements
 --------------------
